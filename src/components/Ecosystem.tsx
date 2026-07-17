@@ -82,7 +82,7 @@ export default function Ecosystem() {
         <div className="px-5 sm:px-8 lg:px-12 flex items-center justify-between gap-4 flex-wrap mb-6 sm:mb-8">
           <div className="flex items-center gap-3">
             <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-navy text-white flex items-center justify-center text-[11px] sm:text-xs font-semibold">
-              3
+              4
             </div>
             <div className="text-xs sm:text-[13px] font-medium border border-navy/20 text-navy rounded-full px-3 sm:px-4 py-1 sm:py-1.5">
               Ecossistema Horizon
@@ -94,7 +94,7 @@ export default function Ecosystem() {
               type="button"
               onClick={() => scrollByCard(-1)}
               aria-label="Anterior"
-              className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-white hover:border-navy hover:text-navy transition-colors duration-300"
+              className="w-10 h-10 rounded-full border border-gray-300 bg-white/80 shadow-[0_6px_16px_-6px_rgba(10,31,68,0.25)] flex items-center justify-center text-gray-600 hover:bg-white hover:border-navy hover:text-navy hover:shadow-[0_10px_22px_-6px_rgba(10,31,68,0.35)] hover:-translate-y-0.5 transition-all duration-300"
             >
               <ArrowLeft size={16} />
             </button>
@@ -102,17 +102,22 @@ export default function Ecosystem() {
               type="button"
               onClick={() => scrollByCard(1)}
               aria-label="Próximo"
-              className="w-9 h-9 rounded-full bg-navy text-white flex items-center justify-center hover:bg-navy-light transition-colors duration-300"
+              className="w-10 h-10 rounded-full bg-navy text-white flex items-center justify-center shadow-[0_10px_24px_-6px_rgba(10,31,68,0.5)] hover:bg-navy-light hover:shadow-[0_14px_30px_-6px_rgba(10,31,68,0.6)] hover:-translate-y-0.5 transition-all duration-300"
             >
               <ArrowRight size={16} />
             </button>
           </div>
         </div>
 
-        <h2 className="px-5 sm:px-8 lg:px-12 text-[clamp(1.75rem,7vw,4.2rem)] sm:text-[clamp(2.5rem,5vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 mb-10 sm:mb-14 lg:mb-16">
+        <h2 className="px-5 sm:px-8 lg:px-12 text-[clamp(1.75rem,7vw,4.2rem)] sm:text-[clamp(2.5rem,5vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 mb-4 sm:mb-5">
           Produtos que já{" "}
           <span className="text-horizon-orange">colocamos no ar</span>
         </h2>
+        <p className="px-5 sm:px-8 lg:px-12 text-[15px] sm:text-base leading-relaxed text-gray-600 max-w-xl mb-10 sm:mb-14 lg:mb-16">
+          Do CRM proprietário da própria Horizon a painéis financeiros e apps
+          sob medida — produtos reais, em uso, construídos com a mesma stack
+          que aplicamos nos projetos dos nossos clientes.
+        </p>
 
         <div
           ref={trackRef}
@@ -126,14 +131,14 @@ export default function Ecosystem() {
             <motion.div
               key={title}
               data-card
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -8 }}
               viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
+              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.25, 0.1, 0.25, 1] }}
               className="snap-start shrink-0 w-[82%] sm:w-[46%] lg:w-[31%]"
             >
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-navy">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-navy shadow-[0_25px_60px_-20px_rgba(10,31,68,0.55)] ring-1 ring-black/5">
                 <img
                   src={image}
                   alt={title}
@@ -147,7 +152,7 @@ export default function Ecosystem() {
               <p className="text-[13px] sm:text-sm text-gray-600 mt-4 leading-relaxed">
                 {description}
               </p>
-              <p className="text-sm sm:text-[15px] font-semibold text-gray-900 mt-1">
+              <p className="text-base sm:text-lg font-semibold text-navy tracking-tight mt-1.5">
                 {title}
               </p>
             </motion.div>

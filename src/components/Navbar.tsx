@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="relative z-20 max-w-[1440px] mx-auto p-2 sm:p-3">
+      <div className="relative z-20 w-full max-w-[1440px] mx-auto p-2 sm:p-3">
         <nav className="flex items-center justify-between bg-white rounded-full p-[5px] pr-2 sm:pr-3">
           <div className="flex items-center gap-8">
             <a href="#" className="flex-shrink-0 flex items-center gap-2 pl-2 sm:pl-3">
@@ -59,7 +59,7 @@ export default function Navbar() {
             </div>
             <RollButton
               label="Falar com a Horizon"
-              className="flex-shrink-0 bg-navy text-white pl-5 pr-2 py-2 gap-3"
+              className="flex-shrink-0 bg-navy hover:bg-navy-light text-white pl-5 pr-2 py-2 shadow-[0_10px_25px_-8px_rgba(10,31,68,0.5)] hover:shadow-[0_14px_32px_-8px_rgba(10,31,68,0.6)] hover:-translate-y-0.5 transition-all duration-300"
               textWrapperClassName="text-[13px] font-medium"
               circleClassName="w-6 h-6 bg-horizon-orange"
               icon={<ArrowRight size={12} className="text-white" />}
@@ -74,7 +74,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden relative z-[60] w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-navy text-white flex items-center justify-center"
+            className="md:hidden relative z-[60] w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-navy hover:bg-navy-light text-white flex items-center justify-center shadow-[0_8px_20px_-6px_rgba(10,31,68,0.5)] transition-colors duration-300"
             aria-label={open ? "Fechar menu" : "Abrir menu"}
           >
             {open ? <X size={18} /> : <Menu size={18} />}
@@ -116,7 +116,7 @@ export default function Navbar() {
 
           <RollButton
             label="Falar com a Horizon"
-            className="w-full justify-between bg-navy text-white pl-6 pr-2 py-2"
+            className="w-full justify-between bg-navy hover:bg-navy-light text-white pl-6 pr-2 py-2 shadow-[0_10px_25px_-8px_rgba(10,31,68,0.5)] transition-colors duration-300"
             textWrapperClassName="text-base font-medium"
             circleClassName="w-9 h-9 bg-horizon-orange"
             icon={<ArrowRight size={16} className="text-white" />}

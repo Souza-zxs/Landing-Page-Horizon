@@ -24,10 +24,16 @@ export default function Hero() {
           esperar.
         </h1>
 
-        <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
+        <p className="mt-5 sm:mt-7 text-[15px] sm:text-lg leading-relaxed text-white/70 max-w-xl">
+          Da arquitetura ao deploy, cuidamos do código, das integrações e da
+          operação — pra sua equipe parar de apagar incêndio e voltar a focar
+          no que faz o negócio crescer.
+        </p>
+
+        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
           <RollButton
             label="Iniciar um projeto"
-            className="bg-horizon-orange hover:bg-[#e55f00] text-white pl-5 sm:pl-6 pr-2 py-2 shadow-[0_10px_30px_-6px_rgba(255,106,0,0.55)] hover:shadow-[0_14px_36px_-6px_rgba(255,106,0,0.65)] hover:-translate-y-0.5 transition-all duration-300"
+            className="bg-horizon-orange hover:bg-[#e55f00] text-white pl-5 sm:pl-6 pr-2 py-2 gap-3 shadow-[0_10px_30px_-6px_rgba(255,106,0,0.55)] hover:shadow-[0_14px_36px_-6px_rgba(255,106,0,0.65)] hover:-translate-y-0.5 transition-all duration-300"
             textWrapperClassName="text-[13px] sm:text-sm font-medium"
             circleClassName="w-7 h-7 sm:w-8 sm:h-8 bg-navy"
             icon={<ArrowRight size={14} className="text-white" />}

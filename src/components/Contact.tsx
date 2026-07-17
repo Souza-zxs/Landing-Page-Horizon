@@ -9,7 +9,7 @@ export default function Contact() {
           <div>
             <div className="flex items-center gap-3 mb-6 sm:mb-8">
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-horizon-orange text-white flex items-center justify-center text-[11px] sm:text-xs font-semibold">
-                4
+                5
               </div>
               <div className="text-xs sm:text-[13px] font-medium border border-white/25 text-white/80 rounded-full px-3 sm:px-4 py-1 sm:py-1.5">
                 Vamos conversar
@@ -72,7 +72,7 @@ export default function Contact() {
             <RollButton
               type="submit"
               label="Enviar mensagem"
-              className="self-start bg-horizon-orange hover:bg-[#e55f00] text-white pl-5 sm:pl-6 pr-2 py-2 mt-1"
+              className="self-start bg-horizon-orange hover:bg-[#e55f00] text-white pl-5 sm:pl-6 pr-2 py-2 mt-1 shadow-[0_10px_28px_-8px_rgba(255,106,0,0.5)] hover:shadow-[0_14px_34px_-8px_rgba(255,106,0,0.6)] hover:-translate-y-0.5 transition-all duration-300"
               textWrapperClassName="text-[13px] sm:text-sm font-medium"
               circleClassName="w-7 h-7 sm:w-8 sm:h-8 bg-white"
               icon={<ArrowRight size={14} className="text-navy" />}

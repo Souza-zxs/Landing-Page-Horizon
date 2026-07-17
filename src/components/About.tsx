@@ -5,7 +5,7 @@ function AboutButton() {
   return (
     <RollButton
       label="Conhecer a Horizon"
-      className="bg-navy hover:bg-navy-light text-white pl-5 sm:pl-6 pr-2 py-2"
+      className="bg-navy hover:bg-navy-light text-white pl-5 sm:pl-6 pr-2 py-2 shadow-[0_10px_25px_-8px_rgba(10,31,68,0.35)] hover:shadow-[0_14px_32px_-8px_rgba(10,31,68,0.45)] hover:-translate-y-0.5 transition-all duration-300"
       textWrapperClassName="text-[13px] sm:text-sm font-medium"
       circleClassName="w-7 h-7 sm:w-8 sm:h-8 bg-horizon-orange"
       icon={<ArrowRight size={14} className="text-white" />}
@@ -55,11 +55,17 @@ export default function About() {
         <div className="px-5 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
           <MarkPanel className="w-full aspect-[438/346] lg:aspect-[4/3]" />
           <div>
-            <p className="text-[15px] sm:text-[17px] lg:text-lg leading-[1.6] font-medium text-gray-900 mb-8">
+            <p className="text-[15px] sm:text-[17px] lg:text-lg leading-[1.6] font-medium text-gray-900 mb-4">
               Somos uma empresa de tecnologia B2B e B2B2C focada em
               transformar processos através de software sob medida e
               automações inteligentes — entregando soluções de ponta a
               ponta.
+            </p>
+            <p className="text-[14px] sm:text-[15px] leading-relaxed text-gray-600 mb-8 max-w-md">
+              Trabalhamos lado a lado com o time técnico do cliente (ou no
+              lugar dele) — da arquitetura do sistema à integração com as
+              ferramentas que a operação já usa, como WhatsApp, ERPs e
+              gateways de pagamento.
             </p>
             <AboutButton />
           </div>

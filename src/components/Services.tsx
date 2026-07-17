@@ -5,6 +5,7 @@ import {
   Smartphone,
   Workflow,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const SERVICES = [
   {
@@ -52,27 +53,36 @@ export default function Services() {
           </div>
         </div>
 
-        <h2 className="text-[clamp(1.75rem,6vw,3.6rem)] font-medium leading-[1.08] tracking-[-0.03em] text-white mb-10 sm:mb-14 lg:mb-16 max-w-2xl">
+        <h2 className="text-[clamp(1.75rem,6vw,3.6rem)] font-medium leading-[1.08] tracking-[-0.03em] text-white mb-4 sm:mb-5 max-w-2xl">
           Da ideia ao deploy, sem
           <br className="hidden sm:block" /> gargalos no meio do caminho.
         </h2>
+        <p className="text-[15px] sm:text-base leading-relaxed text-white/70 max-w-xl mb-10 sm:mb-14 lg:mb-16">
+          Cada frente abaixo pode rodar isolada ou em conjunto — o time da
+          Horizon entra onde o seu processo está mais travado hoje.
+        </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {SERVICES.map(({ icon: Icon, title, description }) => (
-            <div
+          {SERVICES.map(({ icon: Icon, title, description }, i) => (
+            <motion.div
               key={title}
-              className="rounded-2xl bg-white/60 backdrop-blur-lg shadow-[0_20px_50px_-15px_rgba(0,0,0,0.4)] p-6 sm:p-7 hover:bg-white/80 transition-colors duration-300"
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -8 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.25, 0.1, 0.25, 1] }}
+              className="glass-card rounded-3xl p-7 sm:p-8"
             >
-              <div className="w-10 h-10 rounded-lg bg-horizon-orange/15 flex items-center justify-center mb-6">
-                <Icon size={18} className="text-horizon-orange" />
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-horizon-orange to-[#ff9640] shadow-[0_8px_20px_-4px_rgba(255,106,0,0.55)] flex items-center justify-center mb-7">
+                <Icon size={20} className="text-white" />
               </div>
-              <p className="text-[15px] sm:text-base font-semibold text-gray-900 mb-2">
+              <p className="text-lg sm:text-xl font-semibold text-navy tracking-tight mb-2.5">
                 {title}
               </p>
-              <p className="text-[13px] sm:text-sm leading-relaxed text-gray-600">
+              <p className="text-[14px] sm:text-[15px] leading-relaxed text-gray-600">
                 {description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

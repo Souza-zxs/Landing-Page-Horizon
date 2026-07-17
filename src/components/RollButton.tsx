@@ -25,7 +25,7 @@ export default function RollButton({
     <button
       type={type}
       onClick={onClick}
-      className={`group inline-flex items-center rounded-full transition-colors duration-300 ${className}`}
+      className={`group inline-flex items-center gap-3 rounded-full transition-colors duration-300 ${className}`}
     >
       <span className={`relative overflow-hidden h-[20px] ${textWrapperClassName}`}>
         <span
