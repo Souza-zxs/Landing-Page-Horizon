@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Navbar from "./Navbar";
 import RollButton from "./RollButton";
+import { smoothScrollToElement } from "../lib/smoothScroll";
 
 export default function Hero() {
   return (
@@ -37,11 +38,7 @@ export default function Hero() {
             textWrapperClassName="text-[13px] sm:text-sm font-medium"
             circleClassName="w-7 h-7 sm:w-8 sm:h-8 bg-navy"
             icon={<ArrowRight size={14} className="text-white" />}
-            onClick={() =>
-              document
-                .querySelector("#contato")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={() => smoothScrollToElement(document.querySelector("#contato"))}
           />
         </div>
       </div>

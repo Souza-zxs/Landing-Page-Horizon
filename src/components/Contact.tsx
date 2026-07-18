@@ -1,5 +1,6 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail, MessageCircle } from "lucide-react";
 import RollButton from "./RollButton";
+import SectionTag from "./SectionTag";
 
 export default function Contact() {
   return (
@@ -7,13 +8,8 @@ export default function Contact() {
       <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div>
-            <div className="flex items-center gap-3 mb-6 sm:mb-8">
-              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-horizon-orange text-white flex items-center justify-center text-[11px] sm:text-xs font-semibold">
-                5
-              </div>
-              <div className="text-xs sm:text-[13px] font-medium border border-white/25 text-white/80 rounded-full px-3 sm:px-4 py-1 sm:py-1.5">
-                Vamos conversar
-              </div>
+            <div className="mb-6 sm:mb-8">
+              <SectionTag index={5} label="Vamos conversar" variant="dark" />
             </div>
             <h2 className="text-[clamp(1.75rem,5vw,3.4rem)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-5">
               Menos retrabalho manual.
@@ -24,6 +20,30 @@ export default function Contact() {
               Conte pra gente o processo que trava seu negócio hoje. A
               Horizon retorna com um diagnóstico técnico e um plano de
               entrega — sem enrolação.
+            </p>
+
+            <div className="flex flex-wrap gap-3 mt-7">
+              <a
+                href="https://wa.me/5583987999393"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-md px-4 py-2.5 text-sm font-medium text-white hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
+              >
+                <MessageCircle size={16} className="text-horizon-orange" />
+                Chamar no WhatsApp
+              </a>
+              <a
+                href="mailto:horizontecnologiaa@gmail.com"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-md px-4 py-2.5 text-sm font-medium text-white hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
+              >
+                <Mail size={16} className="text-horizon-orange" />
+                Enviar e-mail
+              </a>
+            </div>
+
+            <p className="text-[13px] sm:text-sm text-white/40 italic mt-6 max-w-sm">
+              Sem script de vendas: você fala direto com quem vai construir o
+              projeto.
             </p>
           </div>
 

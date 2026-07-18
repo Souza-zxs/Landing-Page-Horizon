@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowRight, Clock, Menu, X } from "lucide-react";
 import RollButton from "./RollButton";
 import { useSaoPauloTime } from "../hooks/useSaoPauloTime";
+import { smoothScrollToElement } from "../lib/smoothScroll";
 
 const NAV_LINKS = [
   { label: "Serviços", href: "#servicos" },
@@ -24,6 +25,11 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const time = useSaoPauloTime();
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    smoothScrollToElement(document.querySelector(href));
+  };
+
   return (
     <>
       <div className="relative z-20 w-full max-w-[1440px] mx-auto p-2 sm:p-3">
@@ -40,6 +46,7 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="text-sm text-gray-900 hover:text-gray-500 transition-colors duration-300"
                 >
                   {link.label}
@@ -63,11 +70,7 @@ export default function Navbar() {
               textWrapperClassName="text-[13px] font-medium"
               circleClassName="w-6 h-6 bg-horizon-orange"
               icon={<ArrowRight size={12} className="text-white" />}
-              onClick={() =>
-                document
-                  .querySelector("#contato")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => smoothScrollToElement(document.querySelector("#contato"))}
             />
           </div>
 
@@ -106,7 +109,10 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  setOpen(false);
+                  handleNavClick(e, link.href);
+                }}
                 className="py-2 text-[28px] sm:text-[32px] font-medium text-gray-900"
               >
                 {link.label}
@@ -122,9 +128,7 @@ export default function Navbar() {
             icon={<ArrowRight size={16} className="text-white" />}
             onClick={() => {
               setOpen(false);
-              document
-                .querySelector("#contato")
-                ?.scrollIntoView({ behavior: "smooth" });
+              smoothScrollToElement(document.querySelector("#contato"));
             }}
           />
         </div>

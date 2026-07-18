@@ -1,40 +1,41 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import SectionTag from "./SectionTag";
+import { smoothScrollLeft } from "../lib/smoothScroll";
 
 const AUTOPLAY_INTERVAL = 3500;
 
 const ITEMS = [
   {
-    tag: "Ecossistema Horizon",
+    tag: "CRM",
     image: "/ecosystem/zyra.png",
     title: "Zyra",
     description:
       "CRM proprietário multi-tenant da Horizon — contatos, oportunidades e dashboards, com integração nativa ao WhatsApp Cloud API.",
   },
   {
-    tag: "Ecossistema Horizon",
+    tag: "SaaS de gestão",
     image: "/ecosystem/gestao-pro.png",
     title: "Gestão Pro",
     description:
       "Gestão financeira, CRM e portal de cursos em um único painel, com checkout de infoprodutos integrado.",
   },
   {
-    tag: "Ecossistema Horizon",
+    tag: "Fintech",
     image: "/ecosystem/seller-finance.png",
     title: "Seller Finance",
     description:
       "Dashboard financeiro para sellers de marketplace — DRE automático, fluxo de caixa e precificação com IA.",
   },
   {
-    tag: "Ecossistema Horizon",
+    tag: "Saúde",
     image: "/ecosystem/consultorio-pf.png",
     title: "Consultório PF",
     description:
       "Site e painel para clínicas, com agendamento online e atendimento por IA direto no WhatsApp.",
   },
   {
-    tag: "Ecossistema Horizon",
+    tag: "E-commerce",
     image: "/ecosystem/selva-nutrition.png",
     title: "Selva Nutrition",
     description:
@@ -45,13 +46,15 @@ const ITEMS = [
 export default function Ecosystem() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [pageCount, setPageCount] = useState(ITEMS.length);
 
-  const scrollByCard = (direction: 1 | -1) => {
+  const scrollToIndex = (index: number) => {
     const track = trackRef.current;
     if (!track) return;
     const card = track.querySelector<HTMLElement>("[data-card]");
     const amount = card ? card.offsetWidth + 24 : track.clientWidth * 0.8;
-    track.scrollBy({ left: amount * direction, behavior: "smooth" });
+    smoothScrollLeft(track, amount * index);
   };
 
   useEffect(() => {
@@ -62,16 +65,48 @@ export default function Ecosystem() {
       if (isPaused) return;
       const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
       if (atEnd) {
-        track.scrollTo({ left: 0, behavior: "smooth" });
+        smoothScrollLeft(track, 0, 1.3);
         return;
       }
       const card = track.querySelector<HTMLElement>("[data-card]");
       const amount = card ? card.offsetWidth + 24 : track.clientWidth * 0.8;
-      track.scrollBy({ left: amount, behavior: "smooth" });
+      smoothScrollLeft(track, track.scrollLeft + amount, 1.3);
     }, AUTOPLAY_INTERVAL);
 
     return () => clearInterval(interval);
   }, [isPaused]);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const handleScroll = () => {
+      const card = track.querySelector<HTMLElement>("[data-card]");
+      const amount = card ? card.offsetWidth + 24 : track.clientWidth;
+      const index = Math.round(track.scrollLeft / amount);
+      setActiveIndex(Math.max(0, Math.min(index, pageCount - 1)));
+    };
+
+    track.addEventListener("scroll", handleScroll, { passive: true });
+    return () => track.removeEventListener("scroll", handleScroll);
+  }, [pageCount]);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const updatePageCount = () => {
+      const card = track.querySelector<HTMLElement>("[data-card]");
+      const amount = card ? card.offsetWidth + 24 : track.clientWidth;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      const steps = amount > 0 ? Math.round(maxScroll / amount) + 1 : ITEMS.length;
+      setPageCount(Math.max(1, Math.min(steps, ITEMS.length)));
+    };
+
+    updatePageCount();
+    window.addEventListener("resize", updatePageCount);
+    return () => window.removeEventListener("resize", updatePageCount);
+  }, []);
 
   return (
     <section
@@ -79,34 +114,8 @@ export default function Ecosystem() {
       className="relative px-4 sm:px-6 lg:px-10 py-8 sm:py-10 lg:py-14"
     >
       <div className="max-w-[1360px] mx-auto rounded-[28px] sm:rounded-[40px] bg-[#F5F5F5]/70 backdrop-blur-lg shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] overflow-hidden pt-14 sm:pt-16 lg:pt-20 pb-14 sm:pb-16 lg:pb-20">
-        <div className="px-5 sm:px-8 lg:px-12 flex items-center justify-between gap-4 flex-wrap mb-6 sm:mb-8">
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-navy text-white flex items-center justify-center text-[11px] sm:text-xs font-semibold">
-              4
-            </div>
-            <div className="text-xs sm:text-[13px] font-medium border border-navy/20 text-navy rounded-full px-3 sm:px-4 py-1 sm:py-1.5">
-              Ecossistema Horizon
-            </div>
-          </div>
-
-          <div className="hidden sm:flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => scrollByCard(-1)}
-              aria-label="Anterior"
-              className="w-10 h-10 rounded-full border border-gray-300 bg-white/80 shadow-[0_6px_16px_-6px_rgba(10,31,68,0.25)] flex items-center justify-center text-gray-600 hover:bg-white hover:border-navy hover:text-navy hover:shadow-[0_10px_22px_-6px_rgba(10,31,68,0.35)] hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <ArrowLeft size={16} />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollByCard(1)}
-              aria-label="Próximo"
-              className="w-10 h-10 rounded-full bg-navy text-white flex items-center justify-center shadow-[0_10px_24px_-6px_rgba(10,31,68,0.5)] hover:bg-navy-light hover:shadow-[0_14px_30px_-6px_rgba(10,31,68,0.6)] hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <ArrowRight size={16} />
-            </button>
-          </div>
+        <div className="px-5 sm:px-8 lg:px-12 mb-6 sm:mb-8">
+          <SectionTag index={4} label="Ecossistema Horizon" variant="light" />
         </div>
 
         <h2 className="px-5 sm:px-8 lg:px-12 text-[clamp(1.75rem,7vw,4.2rem)] sm:text-[clamp(2.5rem,5vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 mb-4 sm:mb-5">
@@ -149,13 +158,27 @@ export default function Ecosystem() {
                   {tag}
                 </span>
               </div>
-              <p className="text-[13px] sm:text-sm text-gray-600 mt-4 leading-relaxed">
-                {description}
-              </p>
-              <p className="text-base sm:text-lg font-semibold text-navy tracking-tight mt-1.5">
+              <p className="text-base sm:text-lg font-semibold text-navy tracking-tight mt-4">
                 {title}
               </p>
+              <p className="text-[13px] sm:text-sm text-gray-600 mt-1.5 leading-relaxed">
+                {description}
+              </p>
             </motion.div>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-center gap-2 mt-8 sm:mt-10">
+          {Array.from({ length: pageCount }).map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => scrollToIndex(i)}
+              aria-label={`Ir para posição ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === activeIndex ? "w-6 bg-navy" : "w-1.5 bg-navy/20 hover:bg-navy/40"
+              }`}
+            />
           ))}
         </div>
       </div>
