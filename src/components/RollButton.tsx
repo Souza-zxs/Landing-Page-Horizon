@@ -10,6 +10,7 @@ type RollButtonProps = {
   icon: ReactNode;
   type?: "button" | "submit";
   onClick?: () => void;
+  disabled?: boolean;
 };
 
 export default function RollButton({
@@ -20,12 +21,14 @@ export default function RollButton({
   icon,
   type = "button",
   onClick,
+  disabled = false,
 }: RollButtonProps) {
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`group inline-flex items-center gap-3 rounded-full transition-colors duration-300 ${className}`}
+      disabled={disabled}
+      className={`group inline-flex items-center gap-3 rounded-full transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed ${className}`}
     >
       <span className={`relative overflow-hidden h-[20px] ${textWrapperClassName}`}>
         <span

@@ -7,8 +7,13 @@ import Process from "./components/Process";
 import Ecosystem from "./components/Ecosystem";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Dashboard from "./components/Dashboard";
 
 function App() {
+  if (window.location.pathname === "/dashboard") {
+    return <Dashboard />;
+  }
+
   return (
     <>
       <AmbientBackground />
