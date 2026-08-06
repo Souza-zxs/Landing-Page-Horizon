@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { useDashboardPassword } from "../hooks/useDashboardPassword";
+import PasswordGate from "./PasswordGate";
+import DashboardNav from "./DashboardNav";
 
 type Lead = {
   id: string;
@@ -10,13 +13,8 @@ type Lead = {
   mensagem: string;
 };
 
-const STORAGE_KEY = "axion_dashboard_password";
-
 export default function Dashboard() {
-  const [password, setPassword] = useState(
-    () => sessionStorage.getItem(STORAGE_KEY) ?? "",
-  );
-  const [passwordInput, setPasswordInput] = useState("");
+  const { password, setPassword, clearPassword } = useDashboardPassword();
   const [leads, setLeads] = useState<Lead[] | null>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -32,8 +30,7 @@ export default function Dashboard() {
     })
       .then(async (res) => {
         if (res.status === 401) {
-          sessionStorage.removeItem(STORAGE_KEY);
-          setPassword("");
+          clearPassword();
           throw new Error("Senha incorreta.");
         }
         if (!res.ok) throw new Error("Falha ao carregar leads.");
@@ -42,39 +39,15 @@ export default function Dashboard() {
       .then((data) => setLeads(data.leads))
       .catch((err: Error) => setError(err.message))
       .finally(() => setLoading(false));
-  }, [password]);
+  }, [password, clearPassword]);
 
   if (!password) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-navy px-5">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            sessionStorage.setItem(STORAGE_KEY, passwordInput);
-            setPassword(passwordInput);
-          }}
-          className="bg-white rounded-2xl p-8 w-full max-w-sm flex flex-col gap-4"
-        >
-          <h1 className="text-lg font-medium text-gray-900">
-            Dashboard de leads
-          </h1>
-          <input
-            type="password"
-            value={passwordInput}
-            onChange={(e) => setPasswordInput(e.target.value)}
-            placeholder="Senha"
-            autoFocus
-            className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm outline-none focus:border-horizon-orange focus:ring-2 focus:ring-horizon-orange/25"
-          />
-          {error && <p className="text-sm text-red-600">{error}</p>}
-          <button
-            type="submit"
-            className="rounded-lg bg-horizon-orange text-white py-3 text-sm font-medium hover:bg-[#e55f00] transition-colors"
-          >
-            Entrar
-          </button>
-        </form>
-      </div>
+      <PasswordGate
+        title="Dashboard de leads"
+        error={error}
+        onSubmit={setPassword}
+      />
     );
   }
 
@@ -82,13 +55,15 @@ export default function Dashboard() {
     <div className="min-h-screen bg-navy px-5 py-10">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-xl font-medium text-white">
-            Leads da landing page
-          </h1>
+          <div className="flex items-center gap-6">
+            <h1 className="text-xl font-medium text-white">
+              Leads da landing page
+            </h1>
+            <DashboardNav active="leads" />
+          </div>
           <button
             onClick={() => {
-              sessionStorage.removeItem(STORAGE_KEY);
-              setPassword("");
+              clearPassword();
               setLeads(null);
             }}
             className="text-sm text-white/60 hover:text-white transition-colors"

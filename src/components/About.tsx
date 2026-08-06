@@ -49,9 +49,9 @@ const SEGMENTS = [
   {
     icon: Globe,
     tag: "B2B2C",
-    title: "Para o cliente do seu cliente",
+    title: "Para o seu cliente",
     description:
-      "Apps e integrações que chegam até o usuário final do seu cliente.",
+      "Apps e integrações que fazem o seu cliente sentir a diferença na hora de comprar de você.",
   },
 ];
 

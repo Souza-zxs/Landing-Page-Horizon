@@ -8,10 +8,28 @@ import Ecosystem from "./components/Ecosystem";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Dashboard from "./components/Dashboard";
+import PropostasList from "./components/PropostasList";
+import PropostaForm from "./components/PropostaForm";
+import PropostaPublica from "./components/PropostaPublica";
 
 function App() {
-  if (window.location.pathname === "/dashboard") {
+  const pathname = window.location.pathname;
+
+  if (pathname === "/dashboard") {
     return <Dashboard />;
+  }
+
+  if (pathname === "/dashboard/propostas") {
+    return <PropostasList />;
+  }
+
+  if (pathname === "/dashboard/propostas/nova") {
+    return <PropostaForm />;
+  }
+
+  if (pathname.startsWith("/proposta/")) {
+    const slug = pathname.slice("/proposta/".length);
+    return <PropostaPublica slug={slug} />;
   }
 
   return (
