@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:api": "npx vercel dev --listen 3010",
-    "build": "tsc -b && vite build && npm run build:gestao",
+    "build": "tsc -b && vite build && (npm run build:gestao || echo '⚠ build:gestao falhou -- landing segue no ar sem /app, ver log acima')",
     "build:gestao": "cd apps/gestao && npm install && cross-env VITE_BASE_PATH=/app/ npm run build && cd ../.. && node scripts/stitch-gestao.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
