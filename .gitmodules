@@ -1,0 +1,3 @@
+[submodule "apps/gestao"]
+	path = apps/gestao
+	url = https://github.com/Souza-zxs/gestao-horizon.git
