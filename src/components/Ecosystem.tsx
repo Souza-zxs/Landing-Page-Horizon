@@ -122,11 +122,30 @@ export default function Ecosystem() {
           Produtos que já{" "}
           <span className="text-horizon-orange">colocamos no ar</span>
         </h2>
-        <p className="px-5 sm:px-8 lg:px-12 text-[15px] sm:text-base leading-relaxed text-gray-600 max-w-xl mb-10 sm:mb-14 lg:mb-16">
+        <p className="px-5 sm:px-8 lg:px-12 text-[15px] sm:text-base leading-relaxed text-gray-600 max-w-xl mb-8 sm:mb-10">
           Do CRM proprietário da própria Horizon a painéis financeiros e apps
           sob medida — produtos reais, em uso, construídos com a mesma stack
           que aplicamos nos projetos dos nossos clientes.
         </p>
+
+        <div className="px-5 sm:px-8 lg:px-12 flex flex-wrap gap-4 sm:gap-5 mb-10 sm:mb-14 lg:mb-16">
+          <div className="glass-card rounded-2xl px-6 py-5 flex-1 min-w-[220px]">
+            <p className="text-3xl sm:text-4xl font-semibold text-horizon-orange tracking-tight">
+              R$ 8M+
+            </p>
+            <p className="text-[13px] sm:text-sm text-gray-600 mt-1">
+              em resultado gerado para os clientes desses produtos
+            </p>
+          </div>
+          <div className="glass-card rounded-2xl px-6 py-5 flex-1 min-w-[220px]">
+            <p className="text-3xl sm:text-4xl font-semibold text-horizon-orange tracking-tight">
+              +40%
+            </p>
+            <p className="text-[13px] sm:text-sm text-gray-600 mt-1">
+              de produtividade em média, em 8 times atendidos
+            </p>
+          </div>
+        </div>
 
         <div
           ref={trackRef}
