@@ -142,7 +142,7 @@ export default function Ecosystem() {
               +40%
             </p>
             <p className="text-[13px] sm:text-sm text-gray-600 mt-1">
-              de produtividade em média, em 8 times atendidos
+              de ganho médio de produtividade, numa amostra de ~8 times entre os nossos clientes
             </p>
           </div>
         </div>
