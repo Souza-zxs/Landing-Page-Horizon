@@ -6,6 +6,8 @@ import PasswordGate from "./PasswordGate";
 import DashboardNav from "./DashboardNav";
 import RollButton from "./RollButton";
 import SectionTag from "./SectionTag";
+import AgenteComercial from "./AgenteComercial";
+import type { AnaliseComercial } from "../types/analiseComercial";
 
 const inputClass =
   "w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 caret-navy outline-none focus:border-horizon-orange focus:ring-2 focus:ring-horizon-orange/25 transition-all";
@@ -27,6 +29,19 @@ function slugify(value: string): string {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 60);
+}
+
+function clean(value: string | null | undefined): string {
+  const v = (value ?? "").trim();
+  return v.toLowerCase() === "não informado" ? "" : v;
+}
+
+function cleanList(values: string[] | undefined): string[] {
+  return (values ?? []).map(clean).filter(Boolean);
+}
+
+function formatBRL(value: number): string {
+  return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
 export default function PropostaForm() {
@@ -123,6 +138,58 @@ export default function PropostaForm() {
         </div>
       </div>
     );
+  }
+
+  function applyAnalise(a: AnaliseComercial) {
+    const empresa = clean(a.client?.company_name);
+    const decisor = clean(a.decision_maker?.name);
+    const p = a.proposal;
+    const d = a.investment;
+
+    setClienteEmpresa(empresa);
+    setClienteNome(decisor || empresa);
+    setTituloProjeto(clean(p?.headline));
+    setSlugTouched(false);
+    setResumo(clean(p?.solution));
+    setContexto([clean(p?.context), clean(p?.challenge)].filter(Boolean).join("\n\n"));
+
+    const incluidos = cleanList(a.scope?.included);
+    setEscopo(
+      incluidos.length > 0
+        ? incluidos.map((titulo) => ({ key: newKey(), titulo, descricao: "" }))
+        : [{ key: newKey(), titulo: "", descricao: "" }],
+    );
+    setEntregaveisText(cleanList(p?.expected_results).join("\n"));
+    setStackText("");
+
+    const fases = (a.delivery?.phases ?? []).map((f) =>
+      typeof f === "string"
+        ? { periodo: "", titulo: clean(f), descricao: "" }
+        : { periodo: clean(f.periodo), titulo: clean(f.titulo), descricao: clean(f.descricao) },
+    );
+    setCronograma(
+      fases.length > 0
+        ? fases.map((f) => ({ key: newKey(), ...f }))
+        : [{ key: newKey(), periodo: "", titulo: "", descricao: "" }],
+    );
+
+    setInvestimentoValor(d?.implementation != null ? String(d.implementation) : "");
+    setInvestimentoEntrada("");
+    setInvestimentoSaldo("");
+    setInvestimentoPrazo(clean(d?.payment_terms));
+    setInvestimentoNota(
+      [
+        clean(a.delivery?.estimated_deadline) &&
+          `Prazo de entrega: ${clean(a.delivery?.estimated_deadline)}.`,
+        d?.monthly_recurring != null &&
+          `Recorrência sugerida (Horizon Ops Care): ${formatBRL(d.monthly_recurring)}/mês.`,
+      ]
+        .filter(Boolean)
+        .join(" "),
+    );
+    setForaEscopo(cleanList(a.scope?.excluded).join("\n"));
+
+    setContatoNome(decisor);
   }
 
   async function handleSubmit(e: FormEvent) {
@@ -222,6 +289,8 @@ export default function PropostaForm() {
             Cancelar
           </a>
         </div>
+
+        <AgenteComercial onApply={applyAnalise} />
 
         <form
           onSubmit={handleSubmit}
