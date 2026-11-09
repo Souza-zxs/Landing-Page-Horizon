@@ -1,10 +1,12 @@
 
 import AmbientBackground from "./components/AmbientBackground";
 import Hero from "./components/Hero";
+import Problems from "./components/Problems";
 import About from "./components/About";
+import SolutionsTeaser from "./components/SolutionsTeaser";
+import Results from "./components/Results";
 import Services from "./components/Services";
 import Process from "./components/Process";
-import Ecosystem from "./components/Ecosystem";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Dashboard from "./components/Dashboard";
@@ -42,10 +44,12 @@ function App() {
       <AmbientBackground />
       <div className="relative z-10">
         <Hero />
+        <Problems />
         <About />
         <Services />
+        <SolutionsTeaser />
+        <Results />
         <Process />
-        <Ecosystem />
         <Contact />
         <Footer />
       </div>

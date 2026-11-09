@@ -3,10 +3,9 @@ import { useSaoPauloTime } from "../hooks/useSaoPauloTime";
 import horizonIconDark from "../assets/horizon-icon-dark.png?inline";
 
 const FOOTER_LINKS = [
-  { label: "Serviços", href: "/#servicos" },
+  { label: "Como resolvemos", href: "/#servicos" },
   { label: "Soluções", href: "/solucoes" },
-  { label: "Ecossistema", href: "/#ecossistema" },
-  { label: "Sobre", href: "/#sobre" },
+  { label: "Método", href: "/#metodologia" },
   { label: "Contato", href: "/#contato" },
 ];
 
@@ -52,8 +51,9 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-white/60 leading-relaxed max-w-xs">
-              Tecnologia B2B e B2B2C — software sob medida, automações
-              inteligentes e integrações que escalam com o seu negócio.
+              Tecnologia que orquestra resultados: processos, automações,
+              sistemas e dados para operações que querem crescer com
+              consistência.
             </p>
           </div>
 

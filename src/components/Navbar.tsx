@@ -6,10 +6,9 @@ import { smoothScrollToElement } from "../lib/smoothScroll";
 import horizonIcon from "../assets/horizon-icon.png?inline";
 
 const NAV_LINKS = [
-  { label: "Serviços", href: "#servicos" },
+  { label: "Como resolvemos", href: "#servicos" },
   { label: "Soluções", href: "/solucoes" },
-  { label: "Ecossistema", href: "#ecossistema" },
-  { label: "Sobre", href: "#sobre" },
+  { label: "Método", href: "#metodologia" },
   { label: "Contato", href: "#contato" },
 ];
 

@@ -38,17 +38,17 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div>
             <div className="mb-6 sm:mb-8">
-              <SectionTag index={5} label="Vamos conversar" variant="dark" />
+              <SectionTag index={7} label="Vamos conversar" variant="dark" />
             </div>
             <h2 className="text-[clamp(1.75rem,5vw,3.4rem)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-5">
-              Menos retrabalho manual.
+              Qual gargalo da sua operação
               <br />
-              Mais tempo pra <span className="text-horizon-orange">crescer</span>.
+              <span className="text-horizon-orange">precisa ser resolvido primeiro?</span>
             </h2>
             <p className="text-[15px] sm:text-base leading-relaxed text-white/70 max-w-md">
-              Conte pra gente o processo que trava seu negócio hoje. A
-              Horizon retorna com um diagnóstico técnico e um plano de
-              entrega — sem enrolação.
+              Conte o que está limitando a sua operação hoje. A Horizon
+              conversa com você, entende o problema e indica o caminho mais
+              adequado, sem compromisso.
             </p>
 
             <div className="flex flex-wrap gap-3 mt-7">
@@ -62,8 +62,8 @@ export default function Contact() {
             </div>
 
             <p className="text-[13px] sm:text-sm text-white/40 italic mt-6 max-w-sm">
-              Sem script de vendas: você fala direto com quem vai construir o
-              projeto.
+              Sem script de vendas: você fala direto com quem vai trabalhar no
+              seu problema.
             </p>
           </div>
 
@@ -108,7 +108,7 @@ export default function Contact() {
             </div>
             <textarea
               name="mensagem"
-              placeholder="Conte um pouco sobre o projeto"
+              placeholder="Qual gargalo está limitando sua operação?"
               rows={4}
               required
               disabled={status === "submitting"}
