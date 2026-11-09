@@ -3,9 +3,11 @@ import { ArrowRight, Clock, Menu, X } from "lucide-react";
 import RollButton from "./RollButton";
 import { useSaoPauloTime } from "../hooks/useSaoPauloTime";
 import { smoothScrollToElement } from "../lib/smoothScroll";
+import horizonIcon from "../assets/horizon-icon.png?inline";
 
 const NAV_LINKS = [
   { label: "Serviços", href: "#servicos" },
+  { label: "Soluções", href: "/solucoes" },
   { label: "Ecossistema", href: "#ecossistema" },
   { label: "Sobre", href: "#sobre" },
   { label: "Contato", href: "#contato" },
@@ -14,7 +16,7 @@ const NAV_LINKS = [
 function HorizonMark({ className = "" }: { className?: string }) {
   return (
     <img
-      src="/horizon-icon.png"
+      src={horizonIcon}
       alt="Horizon"
       className={`object-contain ${className}`}
     />
@@ -25,7 +27,17 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const time = useSaoPauloTime();
 
+  // Fora da home (ex.: /solucoes) os âncoras apontam para a LP ("/#servicos").
+  const onHome = window.location.pathname === "/";
+  const resolveHref = (href: string) => (href.startsWith("#") && !onHome ? `/${href}` : href);
+  const scrollToContato = () => {
+    const alvo = document.querySelector("#contato");
+    if (alvo) smoothScrollToElement(alvo);
+    else window.location.href = "/#contato";
+  };
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#") || !onHome) return; // navegação normal
     e.preventDefault();
     smoothScrollToElement(document.querySelector(href));
   };
@@ -35,7 +47,7 @@ export default function Navbar() {
       <div className="relative z-20 w-full max-w-[1440px] mx-auto p-2 sm:p-3">
         <nav className="flex items-center justify-between bg-white rounded-full p-[5px] pr-2 sm:pr-3">
           <div className="flex items-center gap-8">
-            <a href="#" className="flex-shrink-0 flex items-center gap-2 pl-2 sm:pl-3">
+            <a href={onHome ? "#" : "/"} className="flex-shrink-0 flex items-center gap-2 pl-2 sm:pl-3">
               <HorizonMark className="w-9 h-9 sm:w-11 sm:h-11" />
               <span className="text-[17px] sm:text-lg font-semibold tracking-tight text-navy">
                 Horizon
@@ -45,8 +57,9 @@ export default function Navbar() {
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
-                  href={link.href}
+                  href={resolveHref(link.href)}
                   onClick={(e) => handleNavClick(e, link.href)}
+                  aria-current={link.href === window.location.pathname ? "page" : undefined}
                   className="text-sm text-gray-900 hover:text-gray-500 transition-colors duration-300"
                 >
                   {link.label}
@@ -70,7 +83,7 @@ export default function Navbar() {
               textWrapperClassName="text-[13px] font-medium"
               circleClassName="w-6 h-6 bg-horizon-orange"
               icon={<ArrowRight size={12} className="text-white" />}
-              onClick={() => smoothScrollToElement(document.querySelector("#contato"))}
+              onClick={scrollToContato}
             />
           </div>
 
@@ -108,7 +121,7 @@ export default function Navbar() {
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
-                href={link.href}
+                href={resolveHref(link.href)}
                 onClick={(e) => {
                   setOpen(false);
                   handleNavClick(e, link.href);
@@ -128,7 +141,7 @@ export default function Navbar() {
             icon={<ArrowRight size={16} className="text-white" />}
             onClick={() => {
               setOpen(false);
-              smoothScrollToElement(document.querySelector("#contato"));
+              scrollToContato();
             }}
           />
         </div>

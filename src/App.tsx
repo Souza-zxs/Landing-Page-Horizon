@@ -11,9 +11,14 @@ import Dashboard from "./components/Dashboard";
 import PropostasList from "./components/PropostasList";
 import PropostaForm from "./components/PropostaForm";
 import PropostaPublica from "./components/PropostaPublica";
+import SolucoesPage from "./components/solucoes/SolucoesPage";
 
 function App() {
   const pathname = window.location.pathname;
+
+  if (pathname === "/solucoes" || pathname === "/solucoes/") {
+    return <SolucoesPage />;
+  }
 
   if (pathname === "/dashboard") {
     return <Dashboard />;

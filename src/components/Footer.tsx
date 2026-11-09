@@ -1,11 +1,13 @@
 import { Clock, Mail, Phone } from "lucide-react";
 import { useSaoPauloTime } from "../hooks/useSaoPauloTime";
+import horizonIconDark from "../assets/horizon-icon-dark.png?inline";
 
 const FOOTER_LINKS = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Ecossistema", href: "#ecossistema" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Contato", href: "#contato" },
+  { label: "Serviços", href: "/#servicos" },
+  { label: "Soluções", href: "/solucoes" },
+  { label: "Ecossistema", href: "/#ecossistema" },
+  { label: "Sobre", href: "/#sobre" },
+  { label: "Contato", href: "/#contato" },
 ];
 
 function InstagramIcon({ size = 15 }: { size?: number }) {
@@ -41,7 +43,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <img
-                src="/horizon-icon.png"
+                src={horizonIconDark}
                 alt="Horizon"
                 className="w-9 h-9 object-contain"
               />
