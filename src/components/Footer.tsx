@@ -96,13 +96,13 @@ export default function Footer() {
                 (83) 9 8799-9393
               </a>
               <a
-                href="https://www.instagram.com/horizon.soluctions/"
+                href="https://www.instagram.com/horizonlabs.ia/"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-2.5 text-sm text-white/70 hover:text-horizon-orange transition-colors duration-300 w-fit"
               >
                 <InstagramIcon />
-                @horizon.soluctions
+                @horizonlabs.ia
               </a>
             </div>
           </div>

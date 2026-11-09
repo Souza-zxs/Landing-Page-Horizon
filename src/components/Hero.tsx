@@ -40,6 +40,15 @@ export default function Hero() {
             icon={<ArrowRight size={14} className="text-white" />}
             onClick={() => smoothScrollToElement(document.querySelector("#contato"))}
           />
+          <a
+            href="/solucoes"
+            className="group inline-flex min-h-[44px] items-center gap-2 text-[13px] sm:text-sm font-medium text-white/90 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-horizon-orange rounded-full px-1"
+          >
+            <span className="border-b border-white/40 group-hover:border-horizon-orange pb-0.5 transition-colors">
+              Conhecer nossas soluções
+            </span>
+            <ArrowRight size={14} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </section>
