@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Problems from "./components/Problems";
 import About from "./components/About";
 import SolutionsTeaser from "./components/SolutionsTeaser";
+import Ecosystem from "./components/Ecosystem";
 import Results from "./components/Results";
 import Services from "./components/Services";
 import Process from "./components/Process";
@@ -48,6 +49,7 @@ function App() {
         <About />
         <Services />
         <SolutionsTeaser />
+        <Ecosystem />
         <Results />
         <Process />
         <Contact />

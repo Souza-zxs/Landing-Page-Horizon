@@ -8,6 +8,7 @@ import horizonIcon from "../assets/horizon-icon.png?inline";
 const NAV_LINKS = [
   { label: "Como resolvemos", href: "#servicos" },
   { label: "Soluções", href: "/solucoes" },
+  { label: "Projetos", href: "#ecossistema" },
   { label: "Método", href: "#metodologia" },
   { label: "Contato", href: "#contato" },
 ];

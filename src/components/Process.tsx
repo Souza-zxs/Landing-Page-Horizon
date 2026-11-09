@@ -40,7 +40,7 @@ export default function Process() {
     <section id="metodologia" className="relative py-16 sm:py-20 lg:py-28">
       <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
         <div className="mb-6 sm:mb-8">
-          <SectionTag index={6} label="Método Horizon" variant="dark" />
+          <SectionTag index={7} label="Método Horizon" variant="dark" />
         </div>
 
         <h2 className="text-[clamp(1.75rem,6vw,3.6rem)] font-medium leading-[1.08] tracking-[-0.03em] text-white mb-4 sm:mb-5 max-w-2xl">

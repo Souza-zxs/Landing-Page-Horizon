@@ -5,6 +5,7 @@ import horizonIconDark from "../assets/horizon-icon-dark.png?inline";
 const FOOTER_LINKS = [
   { label: "Como resolvemos", href: "/#servicos" },
   { label: "Soluções", href: "/solucoes" },
+  { label: "Projetos", href: "/#ecossistema" },
   { label: "Método", href: "/#metodologia" },
   { label: "Contato", href: "/#contato" },
 ];

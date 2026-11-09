@@ -38,7 +38,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div>
             <div className="mb-6 sm:mb-8">
-              <SectionTag index={7} label="Vamos conversar" variant="dark" />
+              <SectionTag index={8} label="Vamos conversar" variant="dark" />
             </div>
             <h2 className="text-[clamp(1.75rem,5vw,3.4rem)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-5">
               Qual gargalo da sua operação
