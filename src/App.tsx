@@ -15,12 +15,18 @@ import PropostasList from "./components/PropostasList";
 import PropostaForm from "./components/PropostaForm";
 import PropostaPublica from "./components/PropostaPublica";
 import SolucoesPage from "./components/solucoes/SolucoesPage";
+import DiagnosticoPage from "./components/diagnostico/DiagnosticoPage";
+import { itamaraca } from "./components/diagnostico/data";
 
 function App() {
   const pathname = window.location.pathname;
 
   if (pathname === "/solucoes" || pathname === "/solucoes/") {
     return <SolucoesPage />;
+  }
+
+  if (pathname === "/diagnostico/itamaraca" || pathname === "/diagnostico/itamaraca/") {
+    return <DiagnosticoPage d={itamaraca} />;
   }
 
   if (pathname === "/dashboard") {

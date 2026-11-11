@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /dashboard
 Disallow: /proposta/
+Disallow: /diagnostico/
 Disallow: /api/
 Disallow: /app
 
