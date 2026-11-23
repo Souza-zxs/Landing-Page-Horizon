@@ -11,9 +11,9 @@ import { openWhatsapp } from "../../lib/whatsapp";
 import { AREAS, BENEFICIOS, ESCOPO, ETAPAS, PRINCIPIOS } from "./data";
 
 const URL_CANONICA = "https://horizonlabs.com.br/cyber";
-const TITULO = "Horizon Cyber — Cyber Assessment e diagnóstico de segurança digital";
+const TITULO = "Horizon Labs Cyber — Cyber Assessment e diagnóstico de segurança digital";
 const DESCRICAO =
-  "A Horizon Cyber avalia a segurança da sua estrutura tecnológica: vulnerabilidades, aplicações, APIs e riscos. Conheça o Cyber Assessment, diagnóstico de segurança digital da Horizon.";
+  "A Horizon Cyber, da Horizon Labs, avalia a segurança da sua estrutura tecnológica: vulnerabilidades, aplicações, APIs e riscos. Conheça o Cyber Assessment, diagnóstico de segurança digital da Horizon.";
 
 const JSON_LD = {
   "@context": "https://schema.org",

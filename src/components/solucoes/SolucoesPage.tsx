@@ -13,9 +13,9 @@ import { smoothScrollToElement } from "../../lib/smoothScroll";
 import { openWhatsapp } from "../../lib/whatsapp";
 
 const URL_CANONICA = "https://horizonlabs.com.br/solucoes";
-const TITULO = "Soluções Horizon — CRM, agentes de IA e inteligência para empresas";
+const TITULO = "Soluções Horizon Labs — CRM, agentes de IA e inteligência para empresas";
 const DESCRICAO =
-  "Conheça o portfólio da Horizon: inteligência comercial, atendimento e conversão com IA, operação e gestão. Tecnologia, inteligência e automação para empresas que querem escalar.";
+  "Conheça o portfólio da Horizon (Horizon Labs): inteligência comercial, atendimento e conversão com IA, operação e gestão. Tecnologia, inteligência e automação para empresas que querem escalar.";
 
 const JSON_LD = {
   "@context": "https://schema.org",
