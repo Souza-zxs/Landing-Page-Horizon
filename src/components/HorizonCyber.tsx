@@ -3,22 +3,7 @@ import { motion } from "framer-motion";
 import RollButton from "./RollButton";
 import SectionTag from "./SectionTag";
 import { smoothScrollToElement } from "../lib/smoothScroll";
-
-const AREAS = [
-  "Cyber Assessment",
-  "Avaliação de vulnerabilidades",
-  "Segurança de aplicações",
-  "Segurança de APIs",
-  "Análise de riscos",
-];
-
-const BENEFICIOS = [
-  "Identificação de vulnerabilidades e pontos de exposição.",
-  "Análise dos principais riscos digitais.",
-  "Avaliação da estrutura tecnológica.",
-  "Relatório com os achados identificados.",
-  "Recomendações priorizadas para evolução da segurança.",
-];
+import { AREAS, BENEFICIOS } from "./cyber/data";
 
 const EASE = [0.25, 0.1, 0.25, 1] as const;
 
@@ -93,16 +78,26 @@ export default function HorizonCyber() {
               ))}
             </ul>
 
-            <RollButton
-              label="Solicitar um Cyber Assessment"
-              className="min-h-[48px] bg-navy hover:bg-navy-light text-white pl-6 pr-2 py-2 shadow-[0_10px_25px_-8px_rgba(10,31,68,0.5)] hover:-translate-y-0.5 transition-all duration-300"
-              textWrapperClassName="text-[13px] sm:text-sm font-medium"
-              circleClassName="w-8 h-8 bg-horizon-orange"
-              icon={<ArrowRight size={14} className="text-white" />}
-              onClick={scrollToContato}
-            />
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+              <RollButton
+                label="Solicitar um Cyber Assessment"
+                className="min-h-[48px] bg-navy hover:bg-navy-light text-white pl-6 pr-2 py-2 shadow-[0_10px_25px_-8px_rgba(10,31,68,0.5)] hover:-translate-y-0.5 transition-all duration-300"
+                textWrapperClassName="text-[13px] sm:text-sm font-medium"
+                circleClassName="w-8 h-8 bg-horizon-orange"
+                icon={<ArrowRight size={14} className="text-white" />}
+                onClick={scrollToContato}
+              />
+              <a
+                href="/cyber"
+                className="inline-flex min-h-[44px] items-center gap-2 text-[13px] sm:text-sm font-medium text-navy underline underline-offset-4 decoration-navy/30 hover:decoration-horizon-orange transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-horizon-orange"
+              >
+                Conhecer a Horizon Cyber
+                <ArrowRight size={14} aria-hidden="true" />
+              </a>
+            </div>
           </motion.div>
         </div>
+
       </div>
     </section>
   );

@@ -15,6 +15,7 @@ import Dashboard from "./components/Dashboard";
 import PropostasList from "./components/PropostasList";
 import PropostaForm from "./components/PropostaForm";
 import PropostaPublica from "./components/PropostaPublica";
+import CyberPage from "./components/cyber/CyberPage";
 import SolucoesPage from "./components/solucoes/SolucoesPage";
 import DiagnosticoPage from "./components/diagnostico/DiagnosticoPage";
 import { itamaraca } from "./components/diagnostico/data";
@@ -24,6 +25,10 @@ function App() {
 
   if (pathname === "/solucoes" || pathname === "/solucoes/") {
     return <SolucoesPage />;
+  }
+
+  if (pathname === "/cyber" || pathname === "/cyber/") {
+    return <CyberPage />;
   }
 
   if (pathname === "/diagnostico/itamaraca" || pathname === "/diagnostico/itamaraca/") {
