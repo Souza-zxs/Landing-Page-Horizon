@@ -1,4 +1,4 @@
-import { BarChart3, Bot, Layers, Plug, type LucideIcon } from "lucide-react";
+import { BarChart3, Bot, Layers, Plug, ShieldCheck, type LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import SectionTag from "./SectionTag";
 
@@ -8,6 +8,7 @@ type Frente = {
   description: string;
   resolve: string;
   wide?: boolean;
+  full?: boolean;
 };
 
 const FRENTES: Frente[] = [
@@ -41,6 +42,14 @@ const FRENTES: Frente[] = [
     resolve: "Falta de visibilidade",
     wide: true,
   },
+  {
+    icon: ShieldCheck,
+    title: "Cibersegurança",
+    description:
+      "Identificamos vulnerabilidades, avaliamos riscos e fortalecemos a segurança de aplicações, APIs e ambientes digitais.",
+    resolve: "Vulnerabilidades e riscos digitais não mapeados",
+    full: true,
+  },
 ];
 
 export default function Services() {
@@ -52,7 +61,7 @@ export default function Services() {
         </div>
 
         <h2 className="text-[clamp(1.75rem,6vw,3.6rem)] font-medium leading-[1.08] tracking-[-0.03em] text-white mb-4 sm:mb-5 max-w-3xl">
-          Quatro frentes, um mesmo objetivo: uma operação que{" "}
+          Cinco frentes, um mesmo objetivo: uma operação que{" "}
           <span className="text-horizon-orange">funciona melhor.</span>
         </h2>
         <p className="text-[15px] sm:text-base leading-relaxed text-white/70 max-w-xl mb-10 sm:mb-14 lg:mb-16">
@@ -60,7 +69,7 @@ export default function Services() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {FRENTES.map(({ icon: Icon, title, description, resolve, wide }, i) => (
+          {FRENTES.map(({ icon: Icon, title, description, resolve, wide, full }, i) => (
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 28 }}
@@ -68,7 +77,7 @@ export default function Services() {
               whileHover={{ y: -8 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.5, delay: i * 0.06, ease: [0.25, 0.1, 0.25, 1] }}
-              className={`glass-card rounded-3xl p-7 sm:p-8 flex flex-col ${wide ? "lg:col-span-2" : ""}`}
+              className={`glass-card rounded-3xl p-7 sm:p-8 flex flex-col ${full ? "sm:col-span-2 lg:col-span-3" : wide ? "lg:col-span-2" : ""}`}
             >
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-horizon-orange to-[#ff9640] shadow-[0_8px_20px_-4px_rgba(255,106,0,0.55)] flex items-center justify-center mb-7">
                 <Icon size={20} aria-hidden="true" className="text-white" />

@@ -13,7 +13,7 @@ export default function SolutionsTeaser() {
         <div className="relative grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-center">
           <div>
             <div className="mb-6">
-              <SectionTag index={4} label="Soluções e produtos" variant="dark" />
+              <SectionTag index={5} label="Soluções e produtos" variant="dark" />
             </div>
             <h2 className="text-[clamp(1.6rem,4.5vw,3rem)] font-medium leading-[1.1] tracking-[-0.03em] text-white mb-5">
               Além de projetos sob medida, a Horizon mantém um{" "}

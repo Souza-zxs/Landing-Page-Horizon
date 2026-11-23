@@ -115,7 +115,7 @@ export default function Ecosystem() {
     >
       <div className="max-w-[1360px] mx-auto rounded-[28px] sm:rounded-[40px] bg-[#F5F5F5]/70 backdrop-blur-lg shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] overflow-hidden pt-14 sm:pt-16 lg:pt-20 pb-14 sm:pb-16 lg:pb-20">
         <div className="px-5 sm:px-8 lg:px-12 mb-6 sm:mb-8">
-          <SectionTag index={5} label="Projetos" variant="light" />
+          <SectionTag index={6} label="Projetos" variant="light" />
         </div>
 
         <h2 className="px-5 sm:px-8 lg:px-12 text-[clamp(1.75rem,7vw,4.2rem)] sm:text-[clamp(2.5rem,5vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 mb-4 sm:mb-5">

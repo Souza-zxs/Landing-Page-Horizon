@@ -3,6 +3,7 @@ import AmbientBackground from "./components/AmbientBackground";
 import Hero from "./components/Hero";
 import Problems from "./components/Problems";
 import About from "./components/About";
+import HorizonCyber from "./components/HorizonCyber";
 import SolutionsTeaser from "./components/SolutionsTeaser";
 import Ecosystem from "./components/Ecosystem";
 import Results from "./components/Results";
@@ -54,6 +55,7 @@ function App() {
         <Problems />
         <About />
         <Services />
+        <HorizonCyber />
         <SolutionsTeaser />
         <Ecosystem />
         <Results />
